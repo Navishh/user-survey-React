@@ -43,7 +43,7 @@ const Step1: React.FC<Step1Props> = ({ nextStep }) => {
       <div className="flex flex-col gap-2">
         <label className="font-bold text-[16px]">
           Applicant's Name{" "}
-          {isAttemptedSubmit && errors.firstName && (
+          {isAttemptedSubmit && errors.firstName && errors.lastName && (
             <span className="text-red-500">*</span>
           )}
         </label>
