@@ -509,8 +509,6 @@ const Step1: React.FC<Step1Props> = ({ nextStep }) => {
             className="flex-1 p-2 border rounded-md"
           />
         </div>
-        {errors.firstName && <span className="text-red-500">*</span>}
-        {errors.lastName && <span className="text-red-500">*</span>}
       </div>
 
       <div className="flex items-center gap-2">
@@ -565,7 +563,12 @@ const Step1: React.FC<Step1Props> = ({ nextStep }) => {
       )}
 
       <div className="flex flex-col gap-2">
-        <label className="font-bold text-[16px]">Age</label>
+        <label className="font-bold text-[16px]">
+          Age{" "}
+          {(errors.day || errors.month || errors.year) && (
+            <span className="text-red-500">*</span>
+          )}
+        </label>
         <div className="flex flex-col gap-2 sm:flex-row">
           <input
             {...register("day", { required: true })}
@@ -583,14 +586,12 @@ const Step1: React.FC<Step1Props> = ({ nextStep }) => {
             className="flex-1 p-2 border rounded-md"
           />
         </div>
-        {(errors.day || errors.month || errors.year) && (
-          <span className="text-red-500">All age fields are required</span>
-        )}
       </div>
 
       <div className="flex flex-col gap-2">
         <label className="font-bold text-[16px]">
-          Do you have a disability?
+          Do you have a disability?{" "}
+          {errors.disability && <span className="text-red-500">*</span>}
         </label>
         <div className="flex flex-col gap-4 sm:flex-row">
           <div className="flex items-center gap-2">
@@ -614,9 +615,6 @@ const Step1: React.FC<Step1Props> = ({ nextStep }) => {
             <label>No</label>
           </div>
         </div>
-        {errors.disability && (
-          <span className="text-red-500">Disability status is required</span>
-        )}
       </div>
 
       {hasDisability && (
@@ -628,7 +626,10 @@ const Step1: React.FC<Step1Props> = ({ nextStep }) => {
         </div>
       )}
 
-      <div className="flex flex-row justify-between">
+      <div
+        className="flex flex-row justify-between mt-5"
+        style={{ marginTop: "50px" }}
+      >
         <Button label="Back" variant="back" />
         <Button label="Next Step" variant="next" />
       </div>

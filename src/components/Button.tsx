@@ -1,6 +1,6 @@
 interface ButtonProps {
   label: string;
-  variant: "back" | "next";
+  variant: "back" | "next" | "purple";
   onClick?: () => void;
 }
 
@@ -9,6 +9,8 @@ const Button: React.FC<ButtonProps> = ({ label, variant, onClick }) => {
   const variantClasses =
     variant === "back"
       ? "border border-orange-500 text-orange-500 bg-white hover:bg-orange-500 hover:text-white"
+      : variant === "purple"
+      ? "bg-purple-900 text-white hover:bg-purple-600"
       : "bg-orange-500 text-white hover:bg-orange-600";
 
   return (

@@ -40,6 +40,7 @@ import Step1 from "./components/Step1";
 import Step2 from "./components/Step2";
 import Step3 from "./components/Step3";
 import Step4 from "./components/Step4";
+import Step5 from "./components/Step5";
 import StepTracker from "./components/StepTracker";
 
 const App: React.FC = () => {
@@ -59,7 +60,14 @@ const App: React.FC = () => {
       {step === 1 && <Step1 nextStep={nextStep} />}
       {step === 2 && <Step2 nextStep={nextStep} prevStep={prevStep} />}
       {step === 3 && <Step3 nextStep={nextStep} prevStep={prevStep} />}
-      {step === 4 && <Step4 prevStep={prevStep} onSubmit={handleSubmit} />}{" "}
+      {step === 4 && (
+        <Step4
+          prevStep={prevStep}
+          // onSubmit={handleSubmit}  />}{" "}
+          nextStep={nextStep}
+        />
+      )}
+      {step === 5 && <Step5 nextStep={nextStep} prevStep={prevStep} />}
     </div>
   );
 };
